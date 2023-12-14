@@ -30,7 +30,7 @@ class BukuController extends Controller
    'image' => 'mimes:jpg,jpeg|max:2048'
   ]);
 
-  $newGbr = '';
+  $newGbr = 'book.jpg';
 
   if ($request->file('image')) {
    $eksGbr = $request->file('image')->getClientOriginalExtension();
