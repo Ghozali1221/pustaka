@@ -9,7 +9,7 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Kategori
 <h5 class="my-3">Daftar Kategori</h5>
 
 <div class="my-4 justify-content-center">
- <a href="" class="btn btn-info me-5">Tambah Data</a>
+ <a href="tambah-kategori" class="btn btn-info me-5">Tambah Data</a>
  <a href="show-kategori-restore" class="btn btn-outline-primary">Restore Data</a>
 </div>
 
