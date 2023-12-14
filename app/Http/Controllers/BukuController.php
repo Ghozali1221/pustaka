@@ -63,7 +63,7 @@ class BukuController extends Controller
   $dataBuku = Book::where('slug', $slug)->first();
   $dataBuku->update($request->all());
 
-  // logic kategori
+  // logic kategori dengan db transaction
   if ($request->categories) {
    $dataBuku->categories()->sync($request->categories);
   }
