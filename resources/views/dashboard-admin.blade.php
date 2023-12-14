@@ -45,27 +45,5 @@ Hello | {{Auth::user()->name}} <b>Selamat Datang </b> di Halaman Dashboard
 
 </div>
 
-<div class="mt-3 p-4">
-  <h5>LOG HISTORY</h5>
-
-  <table class="table table-bordered">
-    <thead>
-      <tr class="text-center">
-        <th>No</th>
-        <th>User</th>
-        <th>Kode Buku</th>
-        <th>Tgl Pinjam</th>
-        <th>Tgl Kembali</th>
-        <th>Finish</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="7" class="text-center">DATA KOSONG</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
 @endsection
