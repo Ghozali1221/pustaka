@@ -12,7 +12,7 @@ Hello | <b> Selamat Datang </b>
     @foreach ($buku as $b)
     <div class="col-lg-3 col-md-4">
       <div class="card h-100">
-        <img src="{{ $b->cover != null ? asset('storage/upload/' . $b->cover) : asset('images/book.jpg') }}" class="card-img-top" draggable="false">
+        <img src="{{ $b->cover != null ? asset('storage/upload/' . $b->cover) : asset('images/book.jpg') }}" class="card-img-top" draggable="false" width="100px" height="auto">
         <div class="card-body">
           <h5 class="card-title">{{$b->kode_buku}}</h5>
           <p class="card-text my-1">{{$b->judul}}</p>
