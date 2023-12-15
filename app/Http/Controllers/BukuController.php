@@ -27,7 +27,7 @@ class BukuController extends Controller
   $validatedData = $request->validate([
    'kode_buku' => 'unique:books', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
-   'image' => 'mimes:jpg,jpeg|max:2048'
+   'image' => 'mimes:jpg,jpeg|max:2000048'
   ]);
 
   $newGbr = 'book.jpg';
@@ -63,7 +63,7 @@ class BukuController extends Controller
   $dataBuku = Book::where('slug', $slug)->first();
   $dataBuku->update($request->all());
 
-  // logic kategori dengan db transaction
+  //db transaction
   if ($request->categories) {
    $dataBuku->categories()->sync($request->categories);
   }
