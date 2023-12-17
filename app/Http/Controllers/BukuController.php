@@ -27,7 +27,7 @@ class BukuController extends Controller
   $validatedData = $request->validate([
    'kode_buku' => 'unique:books', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
-   'image' => 'image|file|max:2048|mimes:jpg,jpeg,png'
+   'image' => 'image|file|max:2048|mimes:jpg,png'
   ]);
 
   $newGbr = '';
@@ -44,7 +44,7 @@ class BukuController extends Controller
   return redirect('/buku')->with('status', 'Berhasil tambah data judul: ' . $dataProses->judul);
  }
 
- public function edit_buku($slug)
+ public function edit_buku(Request $request, $slug)
  {
   $dataBuku = Book::where('slug', $slug)->first();
   $dataKtgr = Category::all();
@@ -53,12 +53,23 @@ class BukuController extends Controller
 
  public function buku_update(Request $request, $slug)
  {
+  $request->validate([
+   'kode_buku' => 'unique:books', 'min:6', 'max:11',
+   'judul' => 'min:6', 'max:100',
+   'image' => 'image|file|max:2048|mimes:jpg,png'
+  ]);
+
+// update image
   if ($request->file('image')) {
+   if ($request->gbrLama) {
+    Storage::delete($request->gbrLama);
+   }
    $eksGbr = $request->file('image')->getClientOriginalExtension();
    $newGbr = $request->judul . '-' . now()->timestamp . '.' . $eksGbr;
    $request->file('image')->storeAs('upload', $newGbr);
    $request['cover'] = $newGbr;
   }
+
   //   update slug
   $request['slug'] = null;
   $dataBuku = Book::where('slug', $slug)->first();
@@ -69,7 +80,7 @@ class BukuController extends Controller
    $dataBuku->categories()->sync($request->categories);
   }
 
-  return redirect('/buku')->with('status', 'Berhasil update data judul: ' . $dataBuku->judul);
+  return redirect('/buku')->with('status', 'Berhasil update data : ' . $dataBuku->judul);
  }
 
  public function delete_buku($slug)

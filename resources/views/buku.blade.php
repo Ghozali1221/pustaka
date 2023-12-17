@@ -39,7 +39,7 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
     <td>{{$b->kode_buku}}</td>
     <td>{{$b->judul}}</td>
     <td>
-     <img src="{{ $b->cover != null ? asset('storage/upload/' . $b->cover) : asset('images/book.jpg') }}" class="card-img-top" draggable="false" width="50px" height="100px">
+     <img src="{{ $b->cover != null ? asset('storage/upload/' . $b->cover) : asset('images/book.jpg') }}" class="card-img-top" draggable="false" width="60px" height="50px">
     </td>
 
     <td>

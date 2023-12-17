@@ -51,18 +51,16 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Edit Buku
    </div>
   </div>
 
-  <div class="mt-4 mb-2">
-   <label for="image" class="form-label" style="display: block;">Gambar</label>
-   <input type="file" id="image" name="image" class="form-control ">
-  </div>
-
-  <div>
-   <label for="dataK" class="me-4">Gambar Terpilih</label>
-   @if($dataBuku->cover != null )
-   <img src="{{asset('storage/upload/'. $dataBuku->cover) }}" alt="" width="100px">
+  <div class="my-4">
+   <label for="image" class="form-label">Gambar</label>
+   <input type="hidden" name="gbrLama" value="{{$dataBuku->cover}}">
+   @if($dataBuku->cover )
+   <img src="{{asset('storage/upload/'. $dataBuku->cover) }}" width="100px" height="50px" class="preview-gbr mt-2 mb-2 d-block">
    @else
-   <img src="{{asset('images/book.jpg') }}" alt="" width="100px">
+   <img class="preview-gbr img-fluid col-sm-5 mb-1">
    @endif
+   <input type="file" id="image" name="image" class="form-control" onchange="previewImage()">
+   <p class="badge bg-primary text-start mt-2 d-block">Ukuran max : 2 MB <br>Ekstensi : jpg dan png</p>
   </div>
 
   <div class="mt-4 justify-content">
@@ -83,4 +81,21 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Edit Buku
   $('.select-multiple').select2();
  });
 </script>
+
+<script>
+ function previewImage() {
+  const gbr = document.querySelector('#image');
+  const PreviewGbr = document.querySelector('.preview-gbr');
+
+  PreviewGbr.style.display = 'block';
+
+  //   ambil data Gambar
+  const oFReader = new FileReader();
+  oFReader.readAsDataURL(image.files[0]);
+  oFReader.onload = function(oFRevent) {
+   PreviewGbr.src = oFRevent.target.result;
+  }
+ }
+</script>
+
 @endsection
