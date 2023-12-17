@@ -11,19 +11,19 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Tambah Buku
 <h5 class="my-2">Tambah Data Buku</h5>
 
 <div class="w-25">
-  @if (session('status'))
-  <div class="alert alert-success">
-    {{ session('status') }}
-  </div>
-  @endif
+ @if (session('status'))
+ <div class="alert alert-success">
+  {{ session('status') }}
+ </div>
+ @endif
 </div>
 
 <div class="w-25">
-  @if (session('error'))
-  <div class="alert alert-danger">
-    {{ session('error') }}
-  </div>
-  @endif
+ @if (session('error'))
+ <div class="alert alert-danger">
+  {{ session('error') }}
+ </div>
+ @endif
 </div>
 
 <div class="w-25">
@@ -50,10 +50,11 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Tambah Buku
 
   <div class="my-4">
    <label for="image" class="form-label">Gambar</label>
-   <input type="file" id="image" name="image" class="form-control">
+   <img class="preview-gbr img-fluid col-sm-5 mb-4">
+   <input type="file" id="image" name="image" class="form-control" onchange="previewImage()">
   </div>
   <div>
-   <p class="badge bg-success text-start">Ukuran gambar maksimal 2 MB <br>Ekstensi : jpg,jpeg dan png</p>
+   <p class="badge bg-primary text-start">Ukuran gambar maksimal 2 MB <br>Ekstensi : jpg,jpeg dan png</p>
   </div>
 
   <div class="mt-4 justify-content">
@@ -73,5 +74,21 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Tambah Buku
  $(document).ready(function() {
   $('.select-multiple').select2();
  });
+</script>
+
+<script>
+ function previewImage() {
+  const gbr = document.querySelector('#image');
+  const PreviewGbr = document.querySelector('.preview-gbr');
+
+  PreviewGbr.style.display = 'block';
+
+  //   ambil data Gambar
+  const oFReader = new FileReader();
+  oFReader.readAsDataURL(image.files[0]);
+  oFReader.onload = function(oFRevent) {
+   PreviewGbr.src = oFRevent.target.result;
+  }
+ }
 </script>
 @endsection
