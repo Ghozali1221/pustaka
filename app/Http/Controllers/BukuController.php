@@ -27,10 +27,10 @@ class BukuController extends Controller
   $validatedData = $request->validate([
    'kode_buku' => 'unique:books', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
-   'image' => 'mimes:jpg,jpeg|max:2000048'
+   'image' => 'mimes:jpg,jpeg|max:2048'
   ]);
 
-  $newGbr = 'book.jpg';
+  $newGbr = '';
 
   if ($request->file('image')) {
    $eksGbr = $request->file('image')->getClientOriginalExtension();
@@ -59,9 +59,10 @@ class BukuController extends Controller
    $request->file('image')->storeAs('upload', $newGbr);
    $request['cover'] = $newGbr;
   }
-
+  $request['slug'] = null;
   $dataBuku = Book::where('slug', $slug)->first();
   $dataBuku->update($request->all());
+  dd($dataBuku);
 
   //db transaction
   if ($request->categories) {

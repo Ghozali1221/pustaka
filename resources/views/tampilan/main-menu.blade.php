@@ -40,6 +40,7 @@
      <a href="/buku" @if(request()->route()->uri == 'buku' ||
       request()->route()->uri == 'add-buku' ||
       request()->route()->uri == 'buku-show/{slug}' ||
+      request()->route()->uri == 'edit-buku/{slug}' ||
       request()->route()->uri == 'buku-restore' ||
       request()->route()->uri == 'hapus-buku/{slug}')
       class='active' @endif >Buku</a>
