@@ -23,12 +23,12 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Edit Buku
   @csrf
   <div class="my-4">
    <label for="kode_buku" class="form-label">Kode Buku</label>
-   <input type="text" id="kode_buku" name="kode_buku" class="form-control " value="{{ $dataBuku->kode_buku }}" autocomplete="off" autofocus>
+   <input type="text" id="kode_buku" name="kode_buku" class="form-control " value="{{ $dataBuku->kode_buku }}">
   </div>
 
   <div class="my-4">
    <label for="judul" class="form-label">Nama Buku</label>
-   <input type="text" id="judul" name="judul" class="form-control " value="{{ $dataBuku->judul }}" autocomplete="off">
+   <input type="text" id="judul" name="judul" class="form-control " value="{{ $dataBuku->judul }}" autocomplete="off" autofocus>
   </div>
 
   <div>
@@ -50,14 +50,13 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Edit Buku
     </ul>
    </div>
   </div>
-
   <div class="my-4">
    <label for="image" class="form-label">Gambar</label>
    <input type="hidden" name="gbrLama" value="{{$dataBuku->cover}}">
    @if($dataBuku->cover )
    <img src="{{asset('storage/upload/'. $dataBuku->cover) }}" width="100px" height="50px" class="preview-gbr mt-2 mb-2 d-block">
    @else
-   <img class="preview-gbr img-fluid col-sm-5 mb-1">
+   <img src="{{asset('images/book.jpg')}}" class="preview-gbr img-fluid col-sm-5 mb-1 d-block mb-2">
    @endif
    <input type="file" id="image" name="image" class="form-control" onchange="previewImage()">
    <p class="badge bg-primary text-start mt-2 d-block">Ukuran max : 2 MB <br>Ekstensi : jpg dan png</p>

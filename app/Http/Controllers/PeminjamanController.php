@@ -25,7 +25,7 @@ class PeminjamanController extends Controller
   $request['return_date'] = Carbon::now()->addDay(3)->toDateString();
   $buku = Book::findOrFail($request->book_id)->only('status');
   if ($buku['status'] != 'tersedia') {
-   Session::flash('pesan', 'Buku Tidak Tersedia/Dipinjam');
+   Session::flash('pesan', 'Buku Sedang Dipinjam');
    Session::flash('status', 'alert-danger');
 
    return redirect('proses-peminjaman');

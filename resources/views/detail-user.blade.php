@@ -38,7 +38,12 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunj
  </div>
 </div>
 
-<div class="mt-3">
+@endsection
+
+
+@section('history')
+
+<div class="mt-1">
  <h5 class="mb-3">History Peminjaman</h5>
  <x-history-table :dataHistory='$dataHistory' />
 </div>

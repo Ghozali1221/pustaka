@@ -27,7 +27,7 @@ class BukuController extends Controller
   $validatedData = $request->validate([
    'kode_buku' => 'unique:books', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
-   'image' => 'image|file|max:2048|mimes:jpg,png'
+   'cover' => 'image|file|max:2048|mimes:jpg,png'
   ]);
 
   $newGbr = '';
@@ -54,12 +54,13 @@ class BukuController extends Controller
  public function buku_update(Request $request, $slug)
  {
   $request->validate([
-   'kode_buku' => 'unique:books', 'min:6', 'max:11',
+   'kode_buku' => 'required', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
-   'image' => 'image|file|max:2048|mimes:jpg,png'
+   'cover' => 'image|file|max:2048|mimes:jpg,png'
   ]);
 
-// update image
+  dd($request->gbrLama);
+  // update image
   if ($request->file('image')) {
    if ($request->gbrLama) {
     Storage::delete($request->gbrLama);
@@ -70,12 +71,12 @@ class BukuController extends Controller
    $request['cover'] = $newGbr;
   }
 
-  //   update slug
+  // update slug
   $request['slug'] = null;
   $dataBuku = Book::where('slug', $slug)->first();
   $dataBuku->update($request->all());
 
-  //db transaction
+  //db transaction(update categories)
   if ($request->categories) {
    $dataBuku->categories()->sync($request->categories);
   }

@@ -21,7 +21,6 @@ class AdminController extends Controller
 
   public function show_data()
   {
-    // hanya menampilkan data role_id = 2
     $dataUser = User::where('role_id', 2)->where('status', 'aktif')->get();
     return view('data-pengunjung', ['dataUser' => $dataUser]);
   }
