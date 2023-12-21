@@ -19,7 +19,7 @@ Hello | <b> Selamat Datang </b>
           <p class="card-text {{$b->status == 'tersedia' ? 'text-primary' : 'text-danger'}}">
             {{$b->status}}
           </p>
-          <a href="/login" class="btn btn-success">Pinjam Buku</a>
+          <a href="/login" class="btn btn-success">Pinjam</a>
         </div>
       </div>
     </div>

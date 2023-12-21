@@ -11,14 +11,6 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Tambah Buku
 <h5 class="my-2">Tambah Data Buku</h5>
 
 <div class="w-25">
- @if (session('status'))
- <div class="alert alert-success">
-  {{ session('status') }}
- </div>
- @endif
-</div>
-
-<div class="w-25">
  @if (session('error'))
  <div class="alert alert-danger">
   {{ session('error') }}

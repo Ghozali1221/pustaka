@@ -32,7 +32,7 @@ class PeminjamanController extends Controller
   } else {
    $jlhPinjamBuku = HistoryLogs::where('user_id', $request->user_id)->where('fix_return_date', null)->count();
    if ($jlhPinjamBuku >= 3) {
-    Session::flash('pesan', 'Peminjaman di tolak, Batas maksimum 3 buku telah terpenuhi');
+    Session::flash('pesan', 'Peminjaman di tolak, Batas maksimum 3 buku telah terpenuhi.');
     Session::flash('status', 'alert-warning');
 
     return redirect('proses-peminjaman');
@@ -44,7 +44,7 @@ class PeminjamanController extends Controller
      HistoryLogs::create($request->all());
      // book_id di ambil dari objek model HistoryLogs
      $buku = Book::findOrFail($request->book_id);
-     $buku->status = 'tidak tersedia';
+     $buku->status = 'dipinjam';
      $buku->save();
      DB::commit();
      Session::flash('pesan', 'Buku Berhasil Dipinjam');
@@ -67,7 +67,7 @@ class PeminjamanController extends Controller
 
  public function proses_pengembalian_buku(Request $request)
  {
-  //   $request->user_id dan seterusnya di ambil dari form, string user_id dan seterusnya di ambil dari kolom HistoryLogs
+  //  $request->user_id dan seterusnya di ambil dari form proses-peminjaman, string user_id dan seterusnya di ambil dari kolom HistoryLogs
   $dataBuku = HistoryLogs::where('user_id', $request->user_id)->where('book_id', $request->book_id)->where('fix_return_date', null);
   $dataAda =  $dataBuku->first();
   $jlhData = $dataBuku->count();

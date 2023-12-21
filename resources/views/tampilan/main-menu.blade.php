@@ -45,7 +45,7 @@
       request()->route()->uri == 'hapus-buku/{slug}')
       class='active' @endif >Buku</a>
 
-      <a href="/proses-peminjaman" @if(request()->route()->uri == 'proses-peminjaman')
+     <a href="/proses-peminjaman" @if(request()->route()->uri == 'proses-peminjaman')
       class='active' @endif> Peminjaman Buku</a>
 
 
@@ -70,12 +70,8 @@
      @endif
     </div>
 
-    <div class="konten p-4 col-lg-6">
+    <div class="konten p-4 col-lg-10">
      @yield('konten')
-    </div>
-
-    <div class="konten p-4 col-lg-4">
-     @yield('history')
     </div>
 
    </div>

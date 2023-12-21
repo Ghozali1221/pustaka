@@ -24,10 +24,11 @@ class BukuController extends Controller
 
  public function proses_add_buku(Request $request)
  {
-  $validatedData = $request->validate([
+//   dd($request->all());
+  $request->validate([
    'kode_buku' => 'unique:books', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
-   'cover' => 'image|file|max:2048|mimes:jpg,png'
+   'image' => 'image|file|max:2048|mimes:jpg,png'
   ]);
 
   $newGbr = '';
@@ -44,7 +45,7 @@ class BukuController extends Controller
   return redirect('/buku')->with('status', 'Berhasil tambah data judul: ' . $dataProses->judul);
  }
 
- public function edit_buku(Request $request, $slug)
+ public function edit_buku($slug)
  {
   $dataBuku = Book::where('slug', $slug)->first();
   $dataKtgr = Category::all();
