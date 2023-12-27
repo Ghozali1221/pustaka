@@ -16,9 +16,10 @@ class PeminjamanController extends Controller
  {
   $user = User::where('id', '!=', 1)->where('status', '!=', 'non-aktif')->get();
   $buku = Book::all();
-  return view('proses-peminjaman', ['user' => $user, 'buku' => $buku]);
+  return view('peminjaman-buku', ['user' => $user, 'buku' => $buku]);
  }
 
+// peminjaman
  public function store(Request $request)
  {
   $request['rent_date'] = Carbon::now()->toDateString();
@@ -28,14 +29,14 @@ class PeminjamanController extends Controller
    Session::flash('pesan', 'Buku Sedang Dipinjam');
    Session::flash('status', 'alert-danger');
 
-   return redirect('proses-peminjaman');
+   return redirect('peminjaman-buku');
   } else {
    $jlhPinjamBuku = HistoryLogs::where('user_id', $request->user_id)->where('fix_return_date', null)->count();
    if ($jlhPinjamBuku >= 3) {
     Session::flash('pesan', 'Peminjaman di tolak, Batas maksimum 3 buku telah terpenuhi.');
     Session::flash('status', 'alert-warning');
 
-    return redirect('proses-peminjaman');
+    return redirect('peminjaman-buku');
    } else {
     // jika berhasil
     try {
@@ -49,7 +50,7 @@ class PeminjamanController extends Controller
      DB::commit();
      Session::flash('pesan', 'Buku Berhasil Dipinjam');
      Session::flash('status', 'alert-success');
-     return redirect('proses-peminjaman');
+     return redirect('peminjaman-buku');
     } catch (\Throwable $th) {
      // jika gagal
      DB::rollBack();
@@ -57,6 +58,7 @@ class PeminjamanController extends Controller
    }
   }
  }
+
 
  public function status_buku()
  {
