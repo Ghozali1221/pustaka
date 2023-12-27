@@ -76,7 +76,7 @@ Route::middleware(['auth'])->group(function () {
 
   Route::get('peminjaman-buku', [PeminjamanController::class, 'index']);
   Route::post('peminjaman-buku', [PeminjamanController::class, 'store']);
-  Route::get('pengembalian-buku', [PeminjamanController::class, 'status_buku']);
+  Route::get('pengembalian-buku', [PeminjamanController::class, 'pengembalian_buku']);
   Route::post('proses-pengembalian-buku', [PeminjamanController::class, 'proses_pengembalian_buku']);
 
   Route::get('history', [HistoryController::class, 'index']);

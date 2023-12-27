@@ -41,7 +41,7 @@ class PeminjamanController extends Controller
     // jika berhasil
     try {
      DB::beginTransaction();
-     // insert to table history_logs melalui model HistoryLogs
+     // insert data to table history_logs melalui model HistoryLogs
      HistoryLogs::create($request->all());
      // book_id di ambil dari objek model HistoryLogs
      $buku = Book::findOrFail($request->book_id);
@@ -60,16 +60,16 @@ class PeminjamanController extends Controller
  }
 
 
- public function status_buku()
+ public function pengembalian_buku()
  {
   $dataUser = User::where('id', '!=', 1)->where('status', '!=', 'non-aktif')->get();
   $dataBuku = Book::all();
-  return view('status-buku', ['dataUser' => $dataUser, 'dataBuku' => $dataBuku]);
+  return view('pengembalian-buku', ['dataUser' => $dataUser, 'dataBuku' => $dataBuku]);
  }
 
  public function proses_pengembalian_buku(Request $request)
  {
-  //  $request->user_id dan seterusnya di ambil dari form proses-peminjaman, string user_id dan seterusnya di ambil dari kolom HistoryLogs
+  //  $request->user_id dan seterusnya di ambil dari form pengembalian_buku, string user_id dan seterusnya di ambil dari kolom HistoryLogs
   $dataBuku = HistoryLogs::where('user_id', $request->user_id)->where('book_id', $request->book_id)->where('fix_return_date', null);
   $dataAda =  $dataBuku->first();
   $jlhData = $dataBuku->count();

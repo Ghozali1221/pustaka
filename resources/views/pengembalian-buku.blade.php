@@ -3,7 +3,7 @@
 @section('konten')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-<div class="col-3 col-md-8 offset-md-2 col-lg-6 offset-md-3 w-50">
+<div class="col-6 w-50">
  Hello | <b>SELAMAT DATANG </b>
  <h4 class="my-3">FORM PENGEMBALIAN BUKU</h4>
  <form action="proses-pengembalian-buku" method="post">
