@@ -74,9 +74,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('restore-data-user/{slug}', [AdminController::class, 'restore_data_user']);
   Route::get('permanent-deleted/{slug}', [AdminController::class, 'permanent_deleted']);
 
-  Route::get('proses-peminjaman', [PeminjamanController::class, 'index']);
-  Route::post('proses-peminjaman', [PeminjamanController::class, 'store']);
-  Route::get('status-buku', [PeminjamanController::class, 'status_buku']);
+  Route::get('peminjaman-buku', [PeminjamanController::class, 'index']);
+  Route::post('peminjaman-buku', [PeminjamanController::class, 'store']);
+  Route::get('pengembalian-buku', [PeminjamanController::class, 'status_buku']);
   Route::post('proses-pengembalian-buku', [PeminjamanController::class, 'proses_pengembalian_buku']);
 
   Route::get('history', [HistoryController::class, 'index']);

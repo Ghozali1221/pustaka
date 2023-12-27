@@ -45,11 +45,11 @@
       request()->route()->uri == 'hapus-buku/{slug}')
       class='active' @endif >Buku</a>
 
-     <a href="/proses-peminjaman" @if(request()->route()->uri == 'proses-peminjaman')
+     <a href="/peminjaman-buku" @if(request()->route()->uri == 'peminjaman-buku')
       class='active' @endif> Peminjaman Buku</a>
 
 
-     <a href="status-buku" @if(request()->route()->uri == 'status-buku') class='active' @endif> Pengembalian Buku</a>
+     <a href="pengembalian-buku" @if(request()->route()->uri == 'pengembalian-buku') class='active' @endif> Pengembalian Buku</a>
 
      <a href="/data-pengunjung" @if(request()->route()->uri == 'data-pengunjung' ||
       request()->route()->uri == 'user-non-aktif' ||
