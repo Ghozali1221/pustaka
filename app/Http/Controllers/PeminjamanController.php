@@ -19,7 +19,7 @@ class PeminjamanController extends Controller
   return view('peminjaman-buku', ['user' => $user, 'buku' => $buku]);
  }
 
-// peminjaman
+ // peminjaman
  public function store(Request $request)
  {
   $request['rent_date'] = Carbon::now()->toDateString();
@@ -28,16 +28,15 @@ class PeminjamanController extends Controller
   if ($buku['status'] != 'tersedia') {
    Session::flash('pesan', 'Buku Sedang Dipinjam');
    Session::flash('status', 'alert-danger');
-
    return redirect('peminjaman-buku');
   } else {
    $jlhPinjamBuku = HistoryLogs::where('user_id', $request->user_id)->where('fix_return_date', null)->count();
    if ($jlhPinjamBuku >= 3) {
     Session::flash('pesan', 'Peminjaman di tolak, Batas maksimum 3 buku telah terpenuhi.');
     Session::flash('status', 'alert-warning');
-
     return redirect('peminjaman-buku');
    } else {
+
     // jika berhasil
     try {
      DB::beginTransaction();
@@ -59,7 +58,6 @@ class PeminjamanController extends Controller
   }
  }
 
-
  public function pengembalian_buku()
  {
   $dataUser = User::where('id', '!=', 1)->where('status', '!=', 'non-aktif')->get();
@@ -75,15 +73,19 @@ class PeminjamanController extends Controller
   $jlhData = $dataBuku->count();
 
   if ($jlhData === 1) {
+   $buku = Book::findOrFail($request->book_id);
+   $buku->status = 'tersedia';
+   $buku->save();
+   
    $dataAda->fix_return_date = Carbon::now()->toDateString();
    $dataAda->save();
    Session::flash('pesan', 'Buku Berhasil Dikembalikan');
    Session::flash('status', 'alert-primary');
-   return redirect('status-buku');
+   return redirect('pengembalian-buku');
   } else {
    Session::flash('pesan', 'ERROR');
-   Session::flash('status', 'alert-warning');
-   return redirect('status-buku');
+   Session::flash('status', 'alert-danger');
+   return redirect('pengembalian-buku');
   }
  }
 }
