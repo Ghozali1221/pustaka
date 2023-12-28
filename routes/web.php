@@ -10,6 +10,7 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
+use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 // public
 Route::get('/', [PublicController::class, 'index']);
 Route::get('logout', [AuthController::class, 'logout']);
+//log-viewers
+Route::get('log-viewers', [LogViewerController::class, 'index']);
 
 
 // Tamu/Guest
