@@ -6,6 +6,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LogViewController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PublicController;
@@ -26,9 +27,11 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 // public
 Route::get('/', [PublicController::class, 'index']);
 Route::get('logout', [AuthController::class, 'logout']);
-//log-viewers
-Route::get('log-viewers', [LogViewerController::class, 'index']);
 
+//log-viewers
+// Route::get('log-viewers', [LogViewerController::class, 'index']);
+//log-viewers
+Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 // Tamu/Guest
 Route::middleware(['only_guest'])->group(function () {

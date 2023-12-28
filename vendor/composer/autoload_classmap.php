@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HistoryController' => $baseDir . '/app/Http/Controllers/HistoryController.php',
     'App\\Http\\Controllers\\HomepageController' => $baseDir . '/app/Http/Controllers/HomepageController.php',
+    'App\\Http\\Controllers\\LogViewController' => $baseDir . '/app/Http/Controllers/LogViewController.php',
     'App\\Http\\Controllers\\PeminjamanController' => $baseDir . '/app/Http/Controllers/PeminjamanController.php',
     'App\\Http\\Controllers\\PengunjungController' => $baseDir . '/app/Http/Controllers/PengunjungController.php',
     'App\\Http\\Controllers\\PublicController' => $baseDir . '/app/Http/Controllers/PublicController.php',

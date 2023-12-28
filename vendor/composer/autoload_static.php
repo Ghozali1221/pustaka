@@ -575,6 +575,7 @@ class ComposerStaticInit85a2d1f87f2013f371ff3e10c2cbf6d6
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HistoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/HistoryController.php',
         'App\\Http\\Controllers\\HomepageController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomepageController.php',
+        'App\\Http\\Controllers\\LogViewController' => __DIR__ . '/../..' . '/app/Http/Controllers/LogViewController.php',
         'App\\Http\\Controllers\\PeminjamanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PeminjamanController.php',
         'App\\Http\\Controllers\\PengunjungController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengunjungController.php',
         'App\\Http\\Controllers\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicController.php',
