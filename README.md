@@ -1,5 +1,5 @@
-username admin : admin
+admin(sebagai admin)
 passwordnya ->admin
 
-username ali(sebagai pengunjung) : ali
+ali(sebagai pengunjung)
 passwordnya ->  ali
