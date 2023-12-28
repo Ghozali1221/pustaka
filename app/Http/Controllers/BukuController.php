@@ -60,7 +60,6 @@ class BukuController extends Controller
    'cover' => 'image|file|max:2048|mimes:jpg,png'
   ]);
 
-  dd($request->gbrLama);
   // update image
   if ($request->file('image')) {
    if ($request->gbrLama) {
