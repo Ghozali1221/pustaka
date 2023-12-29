@@ -10,6 +10,7 @@ use App\Http\Controllers\LogViewController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
@@ -32,6 +33,8 @@ Route::get('logout', [AuthController::class, 'logout']);
 // Route::get('log-viewers', [LogViewerController::class, 'index']);
 //log-viewers
 Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
+Route::get('skill', [SkillController::class, 'index']);
 
 // Tamu/Guest
 Route::middleware(['only_guest'])->group(function () {
