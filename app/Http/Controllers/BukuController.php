@@ -24,7 +24,7 @@ class BukuController extends Controller
 
  public function proses_add_buku(Request $request)
  {
-//   dd($request->all());
+  //   dd($request->all());
   $request->validate([
    'kode_buku' => 'unique:books', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
@@ -59,12 +59,8 @@ class BukuController extends Controller
    'judul' => 'min:6', 'max:100',
    'cover' => 'image|file|max:2048|mimes:jpg,png'
   ]);
-
   // update image
   if ($request->file('image')) {
-   if ($request->gbrLama) {
-    Storage::delete($request->gbrLama);
-   }
    $eksGbr = $request->file('image')->getClientOriginalExtension();
    $newGbr = $request->judul . '-' . now()->timestamp . '.' . $eksGbr;
    $request->file('image')->storeAs('upload', $newGbr);

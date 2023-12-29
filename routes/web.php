@@ -34,6 +34,7 @@ Route::get('logout', [AuthController::class, 'logout']);
 //log-viewers
 Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
+// test
 Route::get('skill', [SkillController::class, 'index']);
 
 // Tamu/Guest
