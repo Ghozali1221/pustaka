@@ -6,6 +6,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LatihanMailController;
 use App\Http\Controllers\LogViewController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
@@ -25,17 +26,21 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 |
 */
 
+//log-viewers
+// Route::get('log-viewers', [LogViewerController::class, 'index']);
+//log-viewers latihan cronjob
+Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
+// test queue
+Route::get('skill', [SkillController::class, 'index']);
+
+// latihan mailtrap
+Route::get('testing', [LatihanMailController::class, 'index']);
+
+
 // public
 Route::get('/', [PublicController::class, 'index']);
 Route::get('logout', [AuthController::class, 'logout']);
-
-//log-viewers
-// Route::get('log-viewers', [LogViewerController::class, 'index']);
-//log-viewers
-Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-
-// test
-Route::get('skill', [SkillController::class, 'index']);
 
 // Tamu/Guest
 Route::middleware(['only_guest'])->group(function () {
