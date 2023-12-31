@@ -6,22 +6,25 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class TestingEmail extends Mailable
+class TestingMailTrap extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public $pengunjung;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($pengunjung)
     {
-        //
+        $this->pengunjung = $pengunjung;
     }
 
     /**
@@ -32,8 +35,7 @@ class TestingEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('adminSGI@gmail.com', 'Ghozali Pane'),
-            subject: 'Testing Email',
+            subject: 'Testing Mail Trap',
         );
     }
 
@@ -45,7 +47,7 @@ class TestingEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.test-mail',
+            view: 'emails.mail-trap',
         );
     }
 
@@ -56,6 +58,8 @@ class TestingEmail extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return [
+            Attachment::fromPath(public_path('pdf/testing.pdf')),
+        ];
     }
 }

@@ -96,6 +96,12 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'reply_to' =>
+    [
+        'address' => 'adminSGTI@info.com',
+        'name' => 'Marina Ayunda'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings
