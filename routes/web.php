@@ -6,6 +6,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LatihanGmailController;
 use App\Http\Controllers\LogViewController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
@@ -36,6 +37,9 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 // Route::get('test-mailtrap', [TestingMailController::class, 'index']);
 
 // Gmail
+Route::get('test-gmail', [LatihanGmailController::class, 'index']);
+
+
 
 // public
 Route::get('/', [PublicController::class, 'index']);

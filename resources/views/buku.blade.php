@@ -11,14 +11,6 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
  <a href="buku-restore" class="btn btn-outline-primary">Restore Data</a>
 </div>
 
-<div class="w-50">
- @if (session('status'))
- <div class="alert alert-success">
-  {{ session('status') }}
- </div>
- @endif
-</div>
-
 <div class="my-4">
  <table class="table table-bordered text-center">
   <thead class="table-secondary border-primary">
@@ -38,8 +30,8 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
     <td>{{$loop->iteration}}</td>
     <td>{{$b->kode_buku}}</td>
     <td>{{$b->judul}}</td>
-    <td>
-     <img src="{{ $b->cover != null ? asset('storage/upload/' . $b->cover) : asset('images/book.jpg') }}" class="card-img-top" draggable="false" width="60px" height="50px">
+    <td class="text-center">
+     <img src="{{ $b->cover != null ? asset('storage/upload/' . $b->cover) : asset('images/book.jpg') }}" draggable="false" width="40px" height="70px">
     </td>
 
     <td>
@@ -49,6 +41,7 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
     </td>
 
     <td>{{$b->status}}</td>
+
     <td>
      <a href="/edit-buku/{{$b->slug}}">Edit</a>
      <a href="/hapus-buku/{{$b->slug}}">Delete</a>
