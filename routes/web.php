@@ -36,9 +36,6 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 // Mailtrap
 // Route::get('test-mailtrap', [TestingMailController::class, 'index']);
 
-// Gmail
-Route::get('test-gmail', [LatihanGmailController::class, 'index']);
-
 
 
 // public
