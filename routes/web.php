@@ -10,6 +10,7 @@ use App\Http\Controllers\LogViewController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TestingGmailController;
 use App\Http\Controllers\TestingMailController;
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
@@ -32,8 +33,9 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 // Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 // Mailtrap
-Route::get('test-mailtrap', [TestingMailController::class, 'index']);
+// Route::get('test-mailtrap', [TestingMailController::class, 'index']);
 
+// Gmail
 
 // public
 Route::get('/', [PublicController::class, 'index']);
