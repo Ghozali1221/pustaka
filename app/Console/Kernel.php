@@ -15,8 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('demo:cron')
-            ->yearly();
+        $schedule->command('app:GmailTest')
+            ->everyMinute();
     }
 
     /**
