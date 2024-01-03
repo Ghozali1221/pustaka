@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'timeout' => 2000,
+    'timeout' => 3000,
 
     /*
     |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ return [
         'user-deleted' => [
         'message' => 'Deleted successfully.',
         'type'    => 'success',
-        'model'   => 'connect',
+        'model'   => 'emotify',
         'title'   => 'User Deleted',
     ],
     ],

@@ -12,7 +12,7 @@ class BukuController extends Controller
 {
  public function index()
  {
-  $buku = Book::all();
+  $buku = Book::paginate(5);
   return view('buku', ['buku' => $buku]);
  }
 
@@ -54,13 +54,18 @@ class BukuController extends Controller
 
  public function buku_update(Request $request, $slug)
  {
+    dd($request->gbrLama);
   $request->validate([
    'kode_buku' => 'required', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
    'cover' => 'image|file|max:2048|mimes:jpg,png'
   ]);
+
   // update image
   if ($request->file('image')) {
+   if ($request->gbrLama) {
+    Storage::delete($request->gbrLama);
+   }
    $eksGbr = $request->file('image')->getClientOriginalExtension();
    $newGbr = $request->judul . '-' . now()->timestamp . '.' . $eksGbr;
    $request->file('image')->storeAs('upload', $newGbr);
@@ -76,7 +81,6 @@ class BukuController extends Controller
   if ($request->categories) {
    $dataBuku->categories()->sync($request->categories);
   }
-
   return redirect('/buku')->with('status', 'Berhasil update data : ' . $dataBuku->judul);
  }
 

@@ -80,6 +80,7 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Kategori
   </tbody>
  </table>
 
-</div>
+{{$kategori->links()}}
 
+</div>
 @endsection

@@ -43,7 +43,7 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Tambah Buku
   <div class="my-4">
    <label for="image" class="form-label">Gambar</label>
    <img class="preview-gbr img-fluid col-sm-5 mb-4">
-   <input type="file" id="image" name="image" class="form-control" onchange="previewImage()">
+   <input type="file" id="image" name="image" class="form-control" accept="image/*" onchange="previewImage()">
   </div>
   <div>
    <p class="badge bg-primary text-start">Ukuran gambar maksimal 2 MB <br>Ekstensi : jpg,jpeg dan png</p>

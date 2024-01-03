@@ -50,6 +50,9 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
    @endforeach
   </tbody>
  </table>
+
+{{$buku->links()}}
+
 </div>
 
 @endsection

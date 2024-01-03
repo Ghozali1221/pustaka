@@ -52,12 +52,13 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Edit Buku
         </div>
         <div class="my-4">
             <label for="image" class="form-label">Gambar</label>
+            <input type="hidden" name="gbrLama" value="{{$dataBuku->cover}}">
             @if($dataBuku->cover )
             <img src="{{asset('storage/upload/'. $dataBuku->cover) }}" width="100px" height="50px" class="preview-gbr mt-2 mb-2 d-block">
             @else
             <img src="{{asset('images/book.jpg')}}" class="preview-gbr img-fluid col-sm-5 mb-1 d-block mb-2">
             @endif
-            <input type="file" id="image" name="image" class="form-control" onchange="previewImage()">
+            <input type="file" id="image" name="image" class="form-control" onchange="previewImage()" accept="image/*">
             <p class="badge bg-primary text-start mt-2 d-block">Ukuran max : 2 MB <br>Ekstensi : jpg dan png</p>
         </div>
 

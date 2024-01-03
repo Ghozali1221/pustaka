@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+
 class CategoriController extends Controller
 {
     public function index()
     {
-        $kategori = Category::all();
+        $kategori = Category::paginate(5);
         return view('/kategori', ['kategori' => $kategori]);
     }
 
@@ -26,7 +27,8 @@ class CategoriController extends Controller
         ]);
 
         $dataProses = Category::create($request->all());
-        return redirect('/kategori')->with('status', 'Berhasil tambah data : ' . $dataProses->name);
+        notify()->success('Update Data Berhasil');
+        return redirect('/kategori');
     }
 
     public function edit_kategori($slug)
@@ -57,8 +59,8 @@ class CategoriController extends Controller
     {
         $dataDelete = Category::where('slug', $slug)->first();
         $dataDelete->delete();
-
-        return redirect('/kategori')->with('status', 'Berhasil hapus data : ' . $dataDelete->name);
+        smilify('success', 'Deleted Data Berhasil');
+        return redirect('/kategori');
     }
 
     public function show_kategori_restore()
@@ -71,13 +73,15 @@ class CategoriController extends Controller
     {
         $dataRestore = Category::withTrashed()->where('slug', $slug)->first();
         $dataRestore->restore();
-        return redirect('/kategori')->with('status', 'Berhasil restore data');
+        smilify('success', 'Restore Data Berhasil');
+        return redirect('/kategori');
     }
 
     public function fix_deleted_kategori($slug)
     {
         $dataFix = Category::withTrashed()->where('slug', $slug)->first();
         $dataFix->forceDelete();
-        return redirect('/kategori')->with('status', 'Berhasil deleted permanent data : ' . $dataFix->name);
+        drakify('success');
+        return redirect('/kategori');
     }
 }
