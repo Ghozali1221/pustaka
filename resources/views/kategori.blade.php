@@ -49,14 +49,6 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Kategori
  <a href="show-kategori-restore" class="btn btn-outline-primary">Restore Data</a>
 </div>
 
-<div class="w-50">
- @if (session('status'))
- <div class="alert alert-success">
-  {{ session('status') }}
- </div>
- @endif
-</div>
-
 <div class="my-4">
  <table class="table table-bordered text-center">
   <thead class="table-secondary border-primary">

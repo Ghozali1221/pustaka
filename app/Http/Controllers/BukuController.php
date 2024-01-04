@@ -54,7 +54,7 @@ class BukuController extends Controller
 
  public function buku_update(Request $request, $slug)
  {
-    dd($request->gbrLama);
+    // dd($request->gbrLama);
   $request->validate([
    'kode_buku' => 'required', 'min:6', 'max:11',
    'judul' => 'min:6', 'max:100',
@@ -81,7 +81,8 @@ class BukuController extends Controller
   if ($request->categories) {
    $dataBuku->categories()->sync($request->categories);
   }
-  return redirect('/buku')->with('status', 'Berhasil update data : ' . $dataBuku->judul);
+  emotify('success', 'your data was successfully updated');
+  return redirect('/buku');
  }
 
  public function delete_buku($slug)

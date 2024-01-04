@@ -10,7 +10,7 @@ class CategoriController extends Controller
 {
     public function index()
     {
-        $kategori = Category::paginate(5);
+        $kategori = Category::orderBy('name', 'asc')->paginate(5);
         return view('/kategori', ['kategori' => $kategori]);
     }
 
@@ -27,7 +27,7 @@ class CategoriController extends Controller
         ]);
 
         $dataProses = Category::create($request->all());
-        notify()->success('Update Data Berhasil');
+        notify()->success('Tambah Data Berhasil');
         return redirect('/kategori');
     }
 
@@ -46,7 +46,8 @@ class CategoriController extends Controller
         $dataEdit = Category::where('slug', $slug)->first();
         $dataEdit->slug = null;
         $dataEdit->update($request->all());
-        return redirect('/kategori')->with('status', 'Berhasil edit data : ' . $dataEdit->name);
+         notify()->success('Update Data Berhasil');
+        return redirect('/kategori');
     }
 
     public function delete_data($slug)
