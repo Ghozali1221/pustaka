@@ -12,7 +12,7 @@ class BukuController extends Controller
 {
  public function index()
  {
-  $buku = Book::paginate(5);
+  $buku = Book::orderBy('judul', 'asc')->paginate(5);
   return view('buku', ['buku' => $buku]);
  }
 

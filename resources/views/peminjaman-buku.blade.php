@@ -18,12 +18,12 @@
    </select>
   </div>
 
-  <div class="my-3">
+    <div class="my-3">
    <label for="book_id" class="form-label">Buku</label>
    <select name="book_id" id="book_id" class="form-control pilihData">
-    <option value="">Pilih Buku</option>
+    <option value="">Pilih Kode dan Buku</option>
     @foreach ($buku as $b)
-    <option value="{{$b->id}}">{{$b->judul}}</option>
+    <option value="{{$b->id}}">{{$b->kode_buku}} - {{$b->judul}}</option>
     @endforeach
    </select>
   </div>

@@ -8,7 +8,7 @@ class HistoryController extends Controller
 {
     public function index()
     {
-        $dataHistory = HistoryLogs::with(['user', 'book'])->get();
+        $dataHistory = HistoryLogs::with(['user', 'book'])->paginate(5);
         return view('history', ['dataHistory' => $dataHistory]);
     }
 }

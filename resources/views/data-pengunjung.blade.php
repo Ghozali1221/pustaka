@@ -55,5 +55,8 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Data Pengunjun
    @endforeach
   </tbody>
  </table>
+
+{{$dataUser->links()}}
+
 </div>
 @endsection

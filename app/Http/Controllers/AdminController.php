@@ -21,7 +21,7 @@ class AdminController extends Controller
 
   public function show_data()
   {
-    $dataUser = User::where('role_id', 2)->where('status', 'aktif')->get();
+    $dataUser = User::where('role_id', 2)->where('status', 'aktif')->orderBy('name', 'asc')->paginate(5);
     return view('data-pengunjung', ['dataUser' => $dataUser]);
   }
 
@@ -43,7 +43,8 @@ class AdminController extends Controller
     $dataAktif = User::where('slug', $slug)->first();
     $dataAktif->status = 'aktif';
     $dataAktif->save();
-    return redirect('/data-pengunjung')->with('status', 'Status User ' . $dataAktif->name . ' Telah Aktif');
+    drakify('success');
+    return redirect('/data-pengunjung');
   }
 
   public function deleted_user($slug)
