@@ -10,7 +10,6 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
  <a href="add-buku" class="btn btn-success me-5">Tambah Data</a>
  <a href="buku-restore" class="btn btn-outline-primary">Restore Data</a>
 </div>
-
 <div class="my-4">
  <table class="table table-bordered text-center">
   <thead class="table-secondary border-primary">

@@ -6,7 +6,7 @@
 
 Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunjung
 
-<h5 class="my-3">Detail User</h5>
+<p class="my-3">Detail User : <b>{{$dataDetail->slug}}</b> </p>
 
 <div class="my-2">
  <a href="/deleted-user/{{$dataDetail->slug}}" class="btn btn-danger me-3"> Deleted User</a>
@@ -27,6 +27,7 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunj
     <th>No</th>
     <th>Gambar</th>
     <th>Kode Buku</th>
+    <th>Judul</th>
     <th>Tgl Peminjaman</th>
    </tr>
   </thead>
@@ -38,6 +39,7 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunj
      <img src="{{ $h->book->cover != null ? asset('storage/upload/' . $h->book->cover) : asset('images/book.jpg') }}" draggable="false" width="40px" height="60px">
     </td>
     <td>{{$h->book->kode_buku}}</td>
+    <td>{{$h->book->judul}}</td>
     <td>{{$h->rent_date}}</td>
    </tr>
    @endforeach
