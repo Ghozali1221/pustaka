@@ -20,20 +20,27 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunj
  </div>
  @endif
 </div>
-<!-- {{$dataDetail}} -->
-{{$dataHistory}}
-<div class="my-4 w-25">
- <div class="card text-center">
-  <div class="card-header">
-   <img src="{{ $dataHistory->book->cover != null ? asset('storage/upload/' . $dataHistory->book->cover) : asset('images/book.jpg') }}" draggable="false" height="50px">
-  </div>
-  <div class="card-body">
-   <h5 class="card-title"> Judul Buku : {{$dataHistory->book->judul}} </h5>
-  </div>
-  <div class="card-footer text-muted">
-   Peminjaman : {{$dataHistory->rent_date}}
-  </div>
- </div>
-</div>
+<div class="my-4">
+ <table class="table table-bordered text-center">
+  <thead class="table-secondary border-primary">
+   <tr>
+    <th>No</th>
+    <th>Gambar</th>
+    <th>Kode Buku</th>
+    <th>Tgl Peminjaman</th>
+   </tr>
+  </thead>
+  <tbody>
+   @foreach ($dataHistory as $h)
+   <tr>
+    <td>{{$loop->iteration}}</td>
+    <td>
+     <img src="{{ $h->book->cover != null ? asset('storage/upload/' . $h->book->cover) : asset('images/book.jpg') }}" draggable="false" width="40px" height="60px">
+    </td>
+    <td>{{$h->book->kode_buku}}</td>
+    <td>{{$h->rent_date}}</td>
+   </tr>
+   @endforeach
+  </tbody>
 
-@endsection
+  @endsection

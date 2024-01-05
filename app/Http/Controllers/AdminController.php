@@ -35,7 +35,8 @@ class AdminController extends Controller
   {
     $dataDetail = User::where('slug', $slug)->first();
     $dataHistory = HistoryLogs::with(['user', 'book'])->where('user_id', $dataDetail->id)->get();
-    return view('detail-user', ['dataDetail' => $dataDetail, 'dataHistory' => $dataHistory[0]]);
+    $dataHistory->toArray();
+    return view('detail-user', ['dataDetail' => $dataDetail, 'dataHistory' => $dataHistory]);
   }
 
   public function aktifkan_user($slug)
