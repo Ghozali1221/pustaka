@@ -67,23 +67,22 @@ class PeminjamanController extends Controller
 
  public function proses_pengembalian_buku(Request $request)
  {
-  //  $request->user_id dan seterusnya di ambil dari form pengembalian_buku, string user_id dan seterusnya di ambil dari kolom HistoryLogs
+  //  $request->user_id dan $request->book_id di ambil dari name pada form pengembalian_buku, string user_id , book_id dan fix_return_id di ambil dari kolom pada tabel HistoryLogs
   $dataBuku = HistoryLogs::where('user_id', $request->user_id)->where('book_id', $request->book_id)->where('fix_return_date', null);
   $dataAda =  $dataBuku->first();
   $jlhData = $dataBuku->count();
 
-  if ($jlhData === 1) {
+  if ($jlhData == 1) {
    $buku = Book::findOrFail($request->book_id);
    $buku->status = 'tersedia';
    $buku->save();
-   
+
    $dataAda->fix_return_date = Carbon::now()->toDateString();
    $dataAda->save();
-   Session::flash('pesan', 'Buku Berhasil Dikembalikan');
-   Session::flash('status', 'alert-primary');
+   notify()->success('Success');
    return redirect('pengembalian-buku');
   } else {
-   Session::flash('pesan', 'ERROR');
+   Session::flash('pesan', 'Data Tidak Sesuai');
    Session::flash('status', 'alert-danger');
    return redirect('pengembalian-buku');
   }

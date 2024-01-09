@@ -28,7 +28,8 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunj
     <th>Gambar</th>
     <th>Kode Buku</th>
     <th>Judul</th>
-    <th>Tgl Peminjaman</th>
+    <th>Tgl Peminjaman Buku</th>
+    <th>Tgl Pengembalian Buku</th>
    </tr>
   </thead>
   <tbody>
@@ -41,6 +42,7 @@ Hello | <b> {{Auth::user()->name}} </b> Selamat Datang di Halaman Detail Pengunj
     <td>{{$h->book->kode_buku}}</td>
     <td>{{$h->book->judul}}</td>
     <td>{{$h->rent_date}}</td>
+    <td>{{$h->fix_return_date}}</td>
    </tr>
    @endforeach
   </tbody>
