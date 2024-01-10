@@ -10,6 +10,15 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
  <a href="add-buku" class="btn btn-success me-5">Tambah Data</a>
  <a href="buku-restore" class="btn btn-outline-primary">Restore Data</a>
 </div>
+
+<div class="w-75">
+ @if (session('status'))
+ <div class="alert alert-success">
+  {{ session('status') }}
+ </div>
+ @endif
+</div>
+
 <div class="my-4">
  <table class="table table-bordered text-center">
   <thead class="table-secondary border-primary">
@@ -35,7 +44,7 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
 
     <td>
      @foreach ( $b->categories as $c )
-     {{$c->name.','}}
+     {{$c->name}}
      @endforeach
     </td>
 
@@ -50,7 +59,7 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
   </tbody>
  </table>
 
-{{$buku->links()}}
+ {{$buku->links()}}
 
 </div>
 

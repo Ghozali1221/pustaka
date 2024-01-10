@@ -7,7 +7,7 @@
 Hello <b> {{Auth::user()->name}} ||| </b> Selamat Datang di Halaman Hapus Data Buku
 
 
-<div class="w-25">
+<div class="w-75">
   @if (session('status'))
   <div class="alert alert-success">
     {{ session('status') }}

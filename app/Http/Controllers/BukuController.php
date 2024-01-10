@@ -117,6 +117,7 @@ class BukuController extends Controller
         $dataFix = Book::withTrashed()->where('slug', $slug)->first();
         File::delete(public_path('storage/upload') . '/' . $dataFix->cover);
         $dataFix->forceDelete();
-        return redirect('/buku')->with('status', 'Berhasil deleted permanent data : ' . $dataFix->judul);
+        drakify('success', 'your data was successfully permanent deleted');
+        return redirect('/buku')->with('status');
     }
 }
