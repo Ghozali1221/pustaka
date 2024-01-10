@@ -55,7 +55,6 @@ class BukuController extends Controller
 
     public function buku_update(Request $request, $slug)
     {
-        // dd($request->gbrLama);
         $request->validate([
             'kode_buku' => 'required', 'min:6', 'max:11',
             'judul' => 'min:6', 'max:100',
@@ -65,7 +64,7 @@ class BukuController extends Controller
         // update image
         if ($request->file('image')) {
             if ($request->gbrLama) {
-                Storage::delete($request->gbrLama);
+                Storage::delete('upload/'.$request->gbrLama);
             }
             $eksGbr = $request->file('image')->getClientOriginalExtension();
             $newGbr = $request->judul . '-' . now()->timestamp . '.' . $eksGbr;
