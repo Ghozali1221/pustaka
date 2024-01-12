@@ -56,7 +56,7 @@ class AuthController extends Controller
 
  public function proses_register(Request $request)
  {
-  $validated = $request->validate([
+  $request->validate([
    'name' => 'required|unique:users|min:4|max:255',
    'password' => 'required|min:4|max:255',
    'telephone' => 'required|min:6|max:29',
@@ -64,7 +64,7 @@ class AuthController extends Controller
   ]);
 
   $request['password'] = Hash::make($request->password);
-  $dataRegis = User::create($request->all());
+  User::create($request->all());
 
   Session::flash('status', 'sukses');
   Session::flash('pesan', 'Registrasi berhasil, mohon tunggu admin sedang memverifikasi.');
