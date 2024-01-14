@@ -6,14 +6,11 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\LatihanGmailController;
-use App\Http\Controllers\LogViewController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TestingMailController;
 use Illuminate\Support\Facades\Route;
-use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +23,11 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 |
 */
 
-// LATIHAN
-//log-viewers
-// Route::get('log-viewers', [LogViewerController::class, 'index']);
-//log-viewers latihan cronjob
-// Route::get('log-viewers', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-
 // Mailtrap
-// Route::get('test-mailtrap', [TestingMailController::class, 'index']);
+Route::get('mailtrap', [TestingMailController::class, 'index']);
 
 // Gmail
-Route::get('test-gmail', [LatihanGmailController::class, 'index']);
+// Route::get('test-gmail', [LatihanGmailController::class, 'index']);
 
 // public
 Route::get('/', [PublicController::class, 'index']);

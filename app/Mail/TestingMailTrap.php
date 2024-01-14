@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Attachment;
@@ -35,6 +34,7 @@ class TestingMailTrap extends Mailable
     public function envelope()
     {
         return new Envelope(
+            from: new Address('admininfo@SGTI.com', 'Human Resources PT.SAMUDERA GROUP TEKNOLOGI INDONESIA'),
             subject: 'Testing Mail Trap',
         );
     }

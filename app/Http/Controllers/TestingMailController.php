@@ -11,7 +11,8 @@ class TestingMailController extends Controller
 {
     public function index()
     {
+        // dd('testing');
         $pengunjung = User::all();
-         Mail::to('ghozalipane@gmail.com')->send(new TestingMailTrap($pengunjung));
+         Mail::to('mhdghozali2@gmail.com')->send(new TestingMailTrap($pengunjung));
     }
 }
