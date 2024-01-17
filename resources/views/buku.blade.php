@@ -11,6 +11,15 @@ Hello | <b>{{Auth::user()->name}} </b> Selamat Datang di Halaman Buku
  <a href="buku-restore" class="btn btn-outline-primary">Restore Data</a>
 </div>
 
+<div class="my-3 col-4 col-md-6 col-sm-11">
+ <form action="" method="get">
+  <div class="input-group mb-3 ">
+   <input type="text" class="form-control" name="pencarian" placeholder="ketikkan kata pencarian" autofocus autocomplete="off">
+   <button class="btn btn-outline-primary">Search</button>
+  </div>
+ </form>
+</div>
+
 <div class="w-75">
  @if (session('status'))
  <div class="alert alert-success">
