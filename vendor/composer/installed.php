@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '7600a218a053083c146c151f779dadf98b1f8f87',
+        'reference' => '85981b4996f125809129bc41f00e85703c75625c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -430,7 +430,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '7600a218a053083c146c151f779dadf98b1f8f87',
+            'reference' => '85981b4996f125809129bc41f00e85703c75625c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -887,15 +887,6 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'rap2hpoutre/laravel-log-viewer' => array(
-            'pretty_version' => 'v2.2.0',
-            'version' => '2.2.0.0',
-            'reference' => '52e7c703a1e83cdae450f406c7d8472332dfb34e',
-            'type' => 'laravel-package',
-            'install_path' => __DIR__ . '/../rap2hpoutre/laravel-log-viewer',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'rhumsaa/uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1081,6 +1072,15 @@
             'install_path' => __DIR__ . '/../spatie/laravel-ignition',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-permission' => array(
+            'pretty_version' => '6.3.0',
+            'version' => '6.3.0.0',
+            'reference' => '4d119986c862ac0168b77338c85d8236bb559a88',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-permission',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/console' => array(
             'pretty_version' => 'v6.3.8',
