@@ -13,51 +13,54 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
- use HasApiTokens, HasFactory, Notifiable, Sluggable, SoftDeletes;
+  use HasApiTokens, HasFactory, Notifiable, Sluggable, SoftDeletes;
 
+  protected static function booted()
+  {
+    static::created(function ($user) {
+      ActivityUser::create([
+        'description' => 'created new user ' . $user->name
+      ]);
+    });
+  }
 
- /**
-  * The attributes that are mass assignable.
-  *
-  * @var array<int, string>
-  */
- protected $fillable = [
-  'name',
-  'password',
-  'telephone',
-  'alamat'
- ];
-
- /**
-  * The attributes that should be hidden for serialization.
-  *
-  * @var array<int, string>
-  */
- protected $hidden = [
-  'password',
-  'remember_token',
- ];
-
- /**
-  * The attributes that should be cast.
-  *
-  * @var array<string, string>
-  */
- protected $casts = [
-  'email_verified_at' => 'datetime',
- ];
-
- // membuat role_id otomatis menjadi 2(pengunjung) ketika user reigister
- protected $attributes = [
-  'role_id' => 2
- ];
-
- public function sluggable(): array
- {
-  return [
-   'slug' => [
-    'source' => 'name'
-   ]
+  protected $fillable = [
+    'name',
+    'password',
+    'telephone',
+    'alamat'
   ];
- }
+
+  /**
+   * The attributes that should be hidden for serialization.
+   *
+   * @var array<int, string>
+   */
+  protected $hidden = [
+    'password',
+    'remember_token',
+  ];
+
+  /**
+   * The attributes that should be cast.
+   *
+   * @var array<string, string>
+   */
+  protected $casts = [
+    'email_verified_at' => 'datetime',
+  ];
+
+  // membuat role_id otomatis menjadi 2(pengunjung) ketika user reigister
+  protected $attributes = [
+    'role_id' => 2
+  ];
+
+  public function sluggable(): array
+  {
+    return [
+      'slug' => [
+        'source' => 'name'
+      ]
+    ];
+  }
 }
