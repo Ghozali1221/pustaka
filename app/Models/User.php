@@ -15,15 +15,6 @@ class User extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable, Sluggable, SoftDeletes;
 
-  protected static function booted()
-  {
-    static::created(function ($user) {
-      ActivityUser::create([
-        'description' => 'created new user ' . $user->name
-      ]);
-    });
-  }
-
   protected $fillable = [
     'name',
     'password',
