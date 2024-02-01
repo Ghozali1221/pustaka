@@ -41,11 +41,12 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
-  // membuat role_id otomatis menjadi 2(pengunjung) ketika user reigister
+  // membuat role_id otomatis menjadi 2(pengunjung) ketika ada user baru register
   protected $attributes = [
     'role_id' => 2
   ];
 
+// membuat slug otomatis
   public function sluggable(): array
   {
     return [

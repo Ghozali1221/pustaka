@@ -7,12 +7,7 @@ use App\Models\User;
 
 class UserObserver
 {
-  /**
-   * Handle the User "created" event.
-   *
-   * @param  \App\Models\User  $user
-   * @return void
-   */
+  public $afterCommit = true;
   public function created(User $user)
   {
     ActivityUser::create([
@@ -20,12 +15,6 @@ class UserObserver
     ]);
   }
 
-  /**
-   * Handle the User "updated" event.
-   *
-   * @param  \App\Models\User  $user
-   * @return void
-   */
   public function updated(User $user)
   {
   }
