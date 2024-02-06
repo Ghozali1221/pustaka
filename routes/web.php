@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('mailtrap', [TestingMailController::class, 'index']);
 
 // Gmail
-Route::get('test-gmail', [LatihanGmailController::class, 'index']);
+// Route::get('test-gmail', [LatihanGmailController::class, 'index']);
 
 // public
 Route::get('/', [PublicController::class, 'index']);

@@ -21,6 +21,7 @@ class AuthController extends Controller
    'name' => ['required'],
    'password' => ['required'],
   ]);
+        dd($credentials);
 
   if (Auth::attempt($credentials)) {
    if (Auth::user()->status != 'aktif') {

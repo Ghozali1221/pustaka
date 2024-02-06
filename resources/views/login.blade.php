@@ -10,18 +10,18 @@
 
 <style>
  .main-menu {
-  height: 100vh;
+  block-size: 100vh;
   box-sizing: border-box;
  }
 
  .login-box {
-  width: 500px;
+  inline-size: 500px;
   border: 1px solid #FFDF00;
   padding: 35px;
  }
 
  form div {
-  margin-bottom: 20px;
+  margin-block-end: 20px;
  }
 </style>
 
