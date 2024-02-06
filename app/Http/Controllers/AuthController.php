@@ -24,6 +24,7 @@ class AuthController extends Controller
 
   if (Auth::attempt($credentials)) {
    if (Auth::user()->status != 'aktif') {
+
     // melarang user non-aktif masuk ke halaman homepage
     Auth::logout();
     $request->session()->invalidate();
