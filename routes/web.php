@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('test-gmail', [LatihanGmailController::class, 'index']);
 
 // public
+Route::permanentRedirect('/here', '/there');
 Route::get('/', [PublicController::class, 'index']);
 Route::get('logout', [AuthController::class, 'logout']);
 
 // Tamu/Guest
 Route::middleware(['only_guest'])->group(function () {
-    Route::get('login', [AuthController::class, 'login'])->name('login');
-    Route::post('login', [AuthController::class, 'authentication'])->middleware('throttle:login');
+    Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('throttle:login');
+    Route::post('login', [AuthController::class, 'authentication']);
     Route::get('register', [AuthController::class, 'register']);
     Route::post('register', [AuthController::class, 'proses_register']);
 });
