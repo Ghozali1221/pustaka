@@ -11,49 +11,49 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-  /**
-   * The path to the "home" route for your application.
-   *
-   * Typically, users are redirected here after authentication.
-   *
-   * @var string
-   */
-  public const HOME = '/home';
+ /**
+  * The path to the "home" route for your application.
+  *
+  * Typically, users are redirected here after authentication.
+  *
+  * @var string
+  */
+ public const HOME = '/home';
 
-  /**
-   * Define your route model bindings, pattern filters, and other route configuration.
-   *
-   * @return void
-   */
-  public function boot()
-  {
-    $this->configureRateLimiting();
+ /**
+  * Define your route model bindings, pattern filters, and other route configuration.
+  *
+  * @return void
+  */
+ public function boot()
+ {
+  $this->configureRateLimiting();
 
-    $this->routes(function () {
-      Route::middleware('api')
-      ->prefix('api')
-      ->group(base_path('routes/api.php'));
+  $this->routes(function () {
+   Route::middleware('api')
+   ->prefix('api')
+   ->group(base_path('routes/api.php'));
 
-      Route::middleware('web')
-      ->group(base_path('routes/web.php'));
-    });
-  }
+   Route::middleware('web')
+   ->group(base_path('routes/web.php'));
+  });
+ }
 
-  /**
-   * Configure the rate limiters for the application.
-   *
-   * @return void
-   */
-  protected function configureRateLimiting()
-  {
-    RateLimiter::for('api', function (Request $request) {
-      return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
-    });
+ /**
+  * Configure the rate limiters for the application.
+  *
+  * @return void
+  */
+ protected function configureRateLimiting()
+ {
+  RateLimiter::for('api', function (Request $request) {
+   return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+  });
 
-    RateLimiter::for('login', function (Request $request) {
-      return Limit::perMinute(3)->by($request->input('name'))->response(function (Request $request, array $headers) {
-        return response('Maksimal percobaan login sebanyak 3 kali...', 429, $headers);
-      });
-    });
-  }
+  RateLimiter::for('login', function (Request $request) {
+   return Limit::perMinute(3)->by($request->input('name'))->response(function (Request $request, array $headers) {
+    return response('Maksimal percobaan login sebanyak 3 kali, silahkan tunggu selama 1 Menit .', 429, $headers);
+   });
+  });
+ }
 }
