@@ -86,4 +86,25 @@ class AuthController extends Controller
   $request->session()->regenerateToken();
   return redirect('/');
  }
+
+ public function change_password()
+ {
+  return view('change_password');
+ }
+
+ public function proses_change_password(Request $request)
+ {
+  if (!Hash::check($request->OldPass, Auth::user()->password)) {
+   return back()->with('error', 'Old password wrong , please try again');
+  }
+
+  if ($request->NewPass != $request->ConfirmPass) {
+   return back()->with('error', 'Password not match , please try again');
+  }
+
+  Auth::user()->update([
+   'password' => Hash::make($request->ConfirmPass)
+  ]);
+  return redirect('/');
+ }
 }

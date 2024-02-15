@@ -71,10 +71,11 @@ class AdminController extends Controller
     return redirect('/data-pengunjung')->with('status', 'Berhasil restore data user : ' . $dataRestore->name);
   }
 
-   public function permanent_deleted($slug)
- {
-  $dataFix = User::withTrashed()->where('slug', $slug)->first();
-  $dataFix->forceDelete();
-  return redirect('/data-pengunjung')->with('status', 'Berhasil deleted permanent data : ' . $dataFix->name);
- }
+  public function permanent_deleted($slug)
+  {
+    $dataFix = User::withTrashed()->where('slug', $slug)->first();
+    $dataFix->forceDelete();
+    return redirect('/data-pengunjung')->with('status', 'Berhasil deleted permanent data : ' . $dataFix->name);
+  }
+
 }

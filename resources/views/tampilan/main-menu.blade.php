@@ -62,6 +62,8 @@
 
      <a href="/logout">Keluar</a>
 
+     <a href="/change_password">Change Password</a>
+
      @else(Auth::user()->role_id === 2)
      <a href="/" @if(request()->route()->uri == '/') class='active' @endif >Homepage</a>
      <a href="/pengunjung" @if(request()->route()->uri == 'pengunjung') class='active' @endif >Profil</a>
