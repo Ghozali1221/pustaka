@@ -1,5 +1,7 @@
-admin(sebagai admin)
-passwordnya ->admin
+username : admin(sebagai admin)
+email    : layanankonsumen@info.com
+password : admin
 
-ahmad(sebagai pengunjung)
-passwordnya ->  ahmad
+username : ahmad(sebagai pengunjung)
+email    : ahmad@gmail.com
+password : ahmad
