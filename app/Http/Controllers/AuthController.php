@@ -102,9 +102,9 @@ class AuthController extends Controller
    return back()->with('error', 'Password not match , please try again');
   }
 
-  Auth::user()->update([
+  $request->user()->update([
    'password' => Hash::make($request->ConfirmPass)
   ]);
-  return redirect('/');
+  return redirect('dashboard-admin');
  }
 }

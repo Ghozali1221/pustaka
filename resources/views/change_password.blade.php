@@ -10,21 +10,33 @@
 
 <body>
 
+
  <h1 class="my-3 text-center">Form Change Password</h1>
+
+ <div class="container text-center w-25">
+  @if (session('error'))
+  <div class="alert alert-danger">
+   {{ session('error') }}
+  </div>
+  @endif
+ </div>
+
  <div class="container flex d-flex justify-content-center">
   <form action="proses_change_password" method="post">
    @csrf
-   <div class="my-3">
+   <div class="my-3 w-75">
     <label for=" OldPass" class="form-label">Old Password</label>
-    <input type="password" class="form-control" id="OldPass" name="OldPass" autofocus>
+    <input type="password" class="form-control" id="OldPass" name="OldPass" autofocus required>
+    <div id="OldPassHelp" class="form-text">
+     minimum 5 characters (combination of numbers, letters, special characters)</div>
    </div>
-   <div class="my-3">
+   <div class="my-3 w-75">
     <label for="NewPass" class="form-label">New Password</label>
-    <input type="password" class="form-control" id="NewPass" name="NewPass">
+    <input type="password" class="form-control" id="NewPass" name="NewPass" required>
    </div>
-   <div class="my-3">
+   <div class="my-3 w-75">
     <label for="ConfirmPass" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="ConfirmPass" name="ConfirmPass">
+    <input type="password" class="form-control" id="ConfirmPass" name="ConfirmPass" required>
    </div>
 
    <div class="d-grid gap-2 d-md-block mt-3">
