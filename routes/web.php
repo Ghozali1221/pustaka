@@ -77,5 +77,7 @@ Route::middleware(['auth'])->group(function () {
  // pengunjung
  Route::middleware(['hanya_pengunjung'])->group(function () {
   Route::get('pengunjung', [PengunjungController::class, 'index']);
+  Route::get('change_pass', [PengunjungController::class, 'change_pass']);
+  Route::post('process_change_pass', [PengunjungController::class, 'process_change_pass']);
  });
 });
