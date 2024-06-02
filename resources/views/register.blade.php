@@ -44,7 +44,7 @@
   </div>
   @endif
 
-  <div class="container w-50">
+  <div class="container w-25">
    <form action="" method="post">
     @csrf
     <div>
