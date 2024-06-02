@@ -28,7 +28,7 @@ class AuthController extends Controller
   if (Auth::attempt($credentials)) {
    if (Auth::user()->status != 'aktif') {
 
-    // melarang user non-aktif masuk ke halaman homepage
+    // melarang user non-aktif masuk ke halaman homepage karena akun belum di verifikasi admin
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
