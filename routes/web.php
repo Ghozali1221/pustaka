@@ -12,7 +12,7 @@ use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 // public
-Route::permanentRedirect('/here', '/there');
+// Route::permanentRedirect('/here', '/there'); 
 Route::get('/', [PublicController::class, 'index']);
 Route::get('logout', [AuthController::class, 'logout']);
 

@@ -9,18 +9,18 @@
 </head>
 <style>
  .main-menu {
-  height: 100vh;
+  block-size: 100vh;
   box-sizing: border-box;
  }
 
  /* .register-box {
-  width: 500px;
+  inline-size: 500px;
   border: 3px dotted #34675C;
   padding: 35px;
  } */
 
  form div {
-  margin-bottom: 20px;
+  margin-block-end: 20px;
  }
 </style>
 
@@ -34,6 +34,7 @@
   </div>
   @endif
 
+  <!-- menampilkan semua error -->
   @if ($errors->any())
   <div class="alert alert-danger" style="inline-size: 500px;">
    <ul>
@@ -54,7 +55,7 @@
 
     <div>
      <label for="password" class="form-label">Password</label>
-     <input type="password" name="password" id="password" class="form-control">
+     <input type="password" name="password" id="password" class="form-control" autocomplete="off">
     </div>
 
     <div>

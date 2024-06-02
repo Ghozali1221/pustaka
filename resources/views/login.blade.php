@@ -40,7 +40,7 @@
     @csrf
     <div>
      <label for="name" class="form-label">Username</label>
-     <input type="text" name="name" id="name" class="form-control" autocomplete="off" autofocus required>
+     <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
     </div>
 
     <div>

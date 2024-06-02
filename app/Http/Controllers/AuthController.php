@@ -71,6 +71,7 @@ class AuthController extends Controller
   $request['password'] = Hash::make($request->password);
   User::create($request->all());
 
+// membuat event/kegiatan jika berhasil registrasi dan di masukkan ke dalam database activity_users_logs
   event(new Registered($request));
 
   Session::flash('status', 'sukses');

@@ -5,8 +5,6 @@
 Hello | <b> Selamat Datang </b>
 <h5 class="mt-4 text-bold">Daftar Buku</h5>
 
-
-
 <div class="my-4">
  <div class="row ">
   @foreach ($buku as $b)
@@ -19,7 +17,7 @@ Hello | <b> Selamat Datang </b>
      <p class="card-text {{$b->status == 'tersedia' ? 'text-primary' : 'text-danger'}}">
       {{$b->status}}
      </p>
-     <a href="/login" class="btn btn-success">Pinjam</a>
+     <a href="" class="btn btn-success">Pinjam</a>
     </div>
    </div>
   </div>
